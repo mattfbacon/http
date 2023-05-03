@@ -358,6 +358,14 @@ impl HeaderValue {
     pub fn is_sensitive(&self) -> bool {
         self.is_sensitive
     }
+
+    /// Convert the `HeaderValue` to its inner `Bytes`.
+    ///
+    /// This conversion is currently zero-cost but is not guaranteed to remain so.
+    #[inline]
+    pub fn into_bytes(self) -> Bytes {
+        self.inner
+    }
 }
 
 impl AsRef<[u8]> for HeaderValue {
